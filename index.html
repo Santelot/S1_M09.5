@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M09.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy tendrán la oportunidad de diseñar una réplica de un puente colgante usando TinkerCAD. La precisión y la simetría serán clave para cumplir con las especificaciones."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si ya tienen una idea clara de cómo construir su puente, levanten las dos manos. Si aún están pensando en cómo lograrlo, den un pequeño golpe en la mesa con las yemas de los dedos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos para agradecer la oportunidad de crear algo asombroso hoy. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Diseñar una réplica precisa de un puente colgante en TinkerCAD. 2. Usar la simetría y la alineación para verificar que cada componente cumpla con las medidas exactas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤣 Actividad 2: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Liberar tensiones y prepararse para el reto con un ejercicio divertido.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Ejercicio de Risa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar con el reto del puente colgante, hagamos un pequeño ejercicio para liberar tensiones. Durante 15 segundos quiero que se rían, aunque sea de forma exagerada. Imaginen que un puente acaba de contarles el mejor chiste sobre arquitectura. ¡Vamos, no se contengan!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 7 "Cronómetro - 15 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Sabían que reírse ayuda a mejorar la memoria a corto plazo? Según algunos estudios, la risa activa varias áreas del cerebro, fomentando la creatividad y ayudando a procesar nueva información. Ahora que estamos en modo creativo, ¡estarán listos para diseñar el mejor puente colgante!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 9 minutos</div>
+        <div class="subtitle">Formar parejas y planificar las tareas del reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy trabajaremos nuevamente con las mismas parejas. Es una gran oportunidad para seguir afinando su trabajo en equipo. Tienen un minuto para encontrar a su compañero y prepararse para el reto."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, un representante de cada equipo pasará a recoger su Magic Tablet. Aprovechen este momento para pensar en las ideas generales de su puente. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En este reto, diseñarán un puente colgante simétrico en TinkerCAD. Pueden elegir entre tres niveles: 
+                <ul>
+                    <li><strong>Rookie:</strong> Diseñen el puente con medidas exactas de 508 mm de largo, 118 mm de ancho y 90 mm de alto.</li>
+                    <li><strong>Master:</strong> (+) El puente debe tener 4 secciones, con las dos centrales levantadas a 45°.</li>
+                    <li><strong>Hacker:</strong> (+) El puente debe incluir cuatro automóviles pequeños a escala en la parte superior.</li>
+                </ul>
+                "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Planeación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que conocen los niveles del reto, tendrán tres minutos para planificar su tablero Kanban. Decidan las tareas necesarias para construir su puente y distribuyan responsabilidades entre los miembros del equipo. Identifiquen qué tareas son prioritarias para mantener el flujo de trabajo eficiente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 32.5 minutos</div>
+        <div class="subtitle">Diseñar un puente colgante en TinkerCAD aplicando precisión y simetría.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora es momento de poner todo en práctica. El reto de hoy será diseñar un puente colgante en TinkerCAD con los niveles de dificultad que ustedes elijan. Pongan a prueba su creatividad, precisión y habilidades en equipo. ¡Vamos a ver quién logra superar este desafío!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 17 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Veamos nuevamente los tres niveles de este reto: 
+                <ul>
+                    <li><strong>Rookie:</strong> Diseñarán un puente colgante con medidas exactas de 508 mm de largo, 118 mm de ancho y 90 mm de alto.</li>
+                    <li><strong>Master:</strong> (+) Su puente tendrá al menos 4 secciones, con las dos centrales levantadas a 45° como un puente plegable.</li>
+                    <li><strong>Hacker:</strong> (+) Incluirán cuatro automóviles pequeños a escala en la parte superior del puente.</li>
+                </ul>
+                "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 25 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Galería de Arte".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a convertir el salón en una galería de arte arquitectónico. Dejen abierto su trabajo en las computadoras y recorran el salón para explorar los puentes de sus compañeros. Tienen tres minutos para ver diferentes enfoques, apreciar los detalles y descubrir nuevas ideas. ¡Disfruten del talento de todos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (3 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 21 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado completar todos los objetivos de la misión: 1. Diseñar un puente colgante con medidas exactas en TinkerCAD. 2. Aplicar simetría y alineación para lograr precisión en cada componente. ¡Felicidades, Genios, han hecho un trabajo impresionante!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 22 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Han demostrado habilidades excepcionales hoy. Todos se llevan Mon-e por su esfuerzo y creatividad. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor the Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Despedida y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 23 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de despedirnos, es momento de cerrar con Honor the Dojo. Cada equipo, por favor, devuelva su Magic Tablet y asegúrense de que su espacio quede ordenado. Un salón limpio es señal de un gran trabajo en equipo. ¡Gracias por su esfuerzo hoy!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
